@@ -1,0 +1,63 @@
+package com.example.madpractical4_20012021007
+
+import android.content.Intent
+import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.provider.AlarmClock
+import android.provider.CallLog
+import android.provider.ContactsContract
+import android.provider.MediaStore
+import android.widget.Button
+import android.widget.EditText
+import androidx.core.view.WindowCompat
+import com.example.madpractical4_20012021007.databinding.ActivityMainBinding
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        val buttonBrowse = findViewById<Button>(R.id.button_browse)
+//        val editText1 = findViewById<EditText>(R.id.edit_text_web_url)
+        buttonBrowse.setOnClickListener{
+            val editText1 = findViewById<EditText>(R.id.edit_text_web_url)
+                Intent(Intent.ACTION_VIEW).setData(Uri.parse("$editText1")).apply { startActivity(this) }
+        }
+
+        val buttonCall = findViewById<Button>(R.id.button_Call)
+
+        buttonCall.setOnClickListener {
+            val editText2 = findViewById<EditText>(R.id.edit_text_call_number)
+            val number = editText2.getText().toString()
+            Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:$number")).apply { startActivity(this) }
+        }
+
+        val buttoncontact = findViewById<Button>(R.id.button_Contact)
+        buttoncontact.setOnClickListener { 
+            Intent(Intent.ACTION_VIEW).setType(ContactsContract.Contacts.CONTENT_TYPE).apply { startActivity(this) }
+        }
+
+        val buttoncalllog = findViewById<Button>(R.id.button_Call_Log)
+        buttoncalllog.setOnClickListener {
+            Intent(Intent.ACTION_VIEW).setType(CallLog.Calls.CONTENT_TYPE).apply { startActivity(this) }
+        }
+
+        val buttongallery = findViewById<Button>(R.id.button_Gallery)
+        buttongallery.setOnClickListener{
+            Intent(Intent.ACTION_VIEW).setType("image/*").apply { startActivity(this) }
+        }
+
+        val buttoncamera = findViewById<Button>(R.id.button_Camera)
+        buttoncamera.setOnClickListener {
+            Intent(MediaStore.ACTION_IMAGE_CAPTURE).apply { startActivity(this) }
+        }
+
+        val buttonalarm = findViewById<Button>(R.id.button_Alarm)
+        buttonalarm.setOnClickListener {
+            Intent(AlarmClock.ACTION_SET_ALARM).apply { startActivity(this) }
+        }
+
+    }
+
+}
