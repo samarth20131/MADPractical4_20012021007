@@ -1,5 +1,6 @@
 package com.example.madpractical4_20012021007
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import com.example.madpractical4_20012021007.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,14 +24,14 @@ class MainActivity : AppCompatActivity() {
 //        val editText1 = findViewById<EditText>(R.id.edit_text_web_url)
         buttonBrowse.setOnClickListener{
             val editText1 = findViewById<EditText>(R.id.edit_text_web_url)
-                Intent(Intent.ACTION_VIEW).setData(Uri.parse("$editText1")).apply { startActivity(this) }
+                Intent(Intent.ACTION_VIEW).setData(Uri.parse("www.google.com")).apply { startActivity(this) }
         }
 
         val buttonCall = findViewById<Button>(R.id.button_Call)
 
         buttonCall.setOnClickListener {
             val editText2 = findViewById<EditText>(R.id.edit_text_call_number)
-            val number = editText2.getText().toString()
+            val number = editText2.text.toString()
             Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:$number")).apply { startActivity(this) }
         }
 
