@@ -1,6 +1,5 @@
 package com.example.madpractical4_20012021007
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -10,12 +9,10 @@ import android.provider.CallLog
 import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.widget.Button
-import android.widget.EditText
-import androidx.core.view.WindowCompat
-import com.example.madpractical4_20012021007.databinding.ActivityMainBinding
-import com.google.android.material.textfield.TextInputEditText
+
 
 class MainActivity : AppCompatActivity() {
+
 
 //    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
